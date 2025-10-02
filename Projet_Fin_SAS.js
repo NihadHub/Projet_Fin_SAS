@@ -72,7 +72,7 @@ function trierAnnee(){
 //Afficher uniquement les livres disponibles
 function afficherLivresDispo(){
     for(let i in Livres){
-    if (Livres.disponible=="oui"){
+    if (Livres[i].disponible=="oui"){
         console.log("id: ", Livres[i].id_livre,"Titre: ", Livres[i].titre,"Auteur: ", Livres[i].auteur,"Année: ", Livres[i].annee,"Disponible: "+Livres[i].disponible);
     }
 }
