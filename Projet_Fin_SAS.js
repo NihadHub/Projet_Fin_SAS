@@ -86,6 +86,15 @@ function rechercherId(){
         }
     }
 }
+function livreNonDispo(){
+    for(let i=0; i<Livres.length;i++){
+        if(livres[i].disponible=="non"){
+            console.log("id:", Livres[i].id, "titre:", Livres[i].titre, "Auteur:",Livres[i].auteur,"Annee:")
+            Livres.push(Livres.disponibl)
+        }
+    }
+    return Livres.disponible
+}
 
  do{
      Menu()
