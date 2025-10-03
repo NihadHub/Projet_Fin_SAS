@@ -7,7 +7,7 @@ let Livres=[
 //Fonction de Menu:
 function Menu(){
 console.log("------Menu d'operations------");
-console.log(" 1.Introduire un livre\n 2.Ajouter plusieurs livres\n 3.Afficher tous les livres\n 4.Trier les livres par titre ascendant/descendant\n 5.Trier les livres par année de publication\n 6.Afficher uniquement les livres disponibles\n 7.Rechercher un livre par ID_livre\n " );
+console.log(" 1.Introduire un livre\n 2.Ajouter plusieurs livres\n 3.Afficher tous les livres\n 4.Trier les livres par titre ascendant/descendant\n 5.Trier les livres par année de publication\n 6.Afficher uniquement les livres disponibles\n 7.Rechercher un livre par ID_livre\n 8.Quitter " );
 nombreOperation= Number(prompt("Veuillez saisir le nombre d'operation requis: "));
 };
 
@@ -26,7 +26,7 @@ function ajouterLivre(){
     let newAnnee=Number(prompt("Veuillez entrer l'annee: "));
     let newDisponible=prompt("le livre est disponible ou non: ");
     Livres.push(new Livre (Livres.length+1, newTitre,newAuteur,newAnnee,newDisponible));
-
+    console.log("Livre a été ajouté avec succés!")
 };
 //fonction pour ajouter  plusieurs livres:
 function ajouterPlusLivres(){
@@ -34,31 +34,31 @@ function ajouterPlusLivres(){
  for(i=0; i<NombreLivres;i++){
     let title= prompt("Entrez le titre de livre "+ (i+1)+ ": ");
     let author= prompt("Entrez l'auteur de livre "+ (i+1)+ ": ");
-    let year = prompt("Entrez l'annee de livre "+ (i+1)+ ": ");
+    let year = Number(prompt("Entrez l'annee de livre "+ (i+1)+ ": "));
     let dispo= prompt("disponible est ou non "+ (i+1)+ ": ");
     Livres.push(new Livre (Livres.length+1, title,author,year,dispo));
  };
-  
+  console.log("Livres ont été ajouté avec succés!")
 };
 //fonction pour afficher tous les livres
 function afficher(){
     for(i=0; i<Livres.length;i++){
-        console.log("id_livre: ", Livres[i].id_livre, "Titre: ",Livres[i].titre, "Auteur: ",Livres[i].auteur, "Annee: ", Livres[i].annee,"Disponible: "+ Livres[i].disponible );
+        console.log("id:",Livres[i].id_livre, "Titre:",Livres[i].titre, "Auteur:",Livres[i].auteur, "Annee:",Livres[i].annee, "Disponible:"+Livres[i].disponible );
     }
 }
 //Trier les livres par titre (ascendant/descendant)
  function TrierTitre(){
-    let tri= prompt("Entrez A pour un tri ascendant et D pour un tri descendant ");
+    let tri= prompt("Entrez A pour un tri ascendant et D pour un tri descendant: ");
     if(tri=='A'){
         Livres.sort((a,b)=> a.titre.localeCompare(b.titre));
         for(i=0; i<Livres.length;i++){
-        console.log("id_livre: ", Livres[i].id_livre, "Titre: ",Livres[i].titre, "Auteur: ",Livres[i].auteur, "Annee: ", Livres[i].annee,"Disponible: "+ Livres[i].disponible );
+        console.log("id:", Livres[i].id_livre, "Titre:",Livres[i].titre, "Auteur:",Livres[i].auteur, "Annee:",Livres[i].annee, "Disponible:"+Livres[i].disponible );
     }
     }
     if(tri=='D'){
      Livres.sort((a,b)=> b.titre.localeCompare(a.titre));
         for(i=0; i<Livres.length;i++){
-        console.log("id_livre: ", Livres[i].id_livre, "Titre: ",Livres[i].titre, "Auteur: ",Livres[i].auteur, "Annee: ", Livres[i].annee,"Disponible: "+ Livres[i].disponible );
+        console.log("id:", Livres[i].id_livre, "Titre:",Livres[i].titre, "Auteur:",Livres[i].auteur, "Annee:",Livres[i].annee, "Disponible:"+Livres[i].disponible );
     }
     }
  }
@@ -66,14 +66,14 @@ function afficher(){
 function trierAnnee(){
     Livres.sort((a,b)=>a.annee - b.annee);
     for(i=0; i<Livres.length;i++){
-        console.log("id_livre: ", Livres[i].id_livre, "Titre: ",Livres[i].titre, "Auteur: ",Livres[i].auteur, "Annee: ", Livres[i].annee,"Disponible: "+ Livres[i].disponible );
+        console.log("id:", Livres[i].id_livre, "Titre:",Livres[i].titre, "Auteur:",Livres[i].auteur, "Annee:",Livres[i].annee, "Disponible:"+Livres[i].disponible );
     }
 }
 //Afficher uniquement les livres disponibles
 function afficherLivresDispo(){
     for(let i in Livres){
-    if (Livres[i].disponible=="oui"){
-        console.log("id: ", Livres[i].id_livre,"Titre: ", Livres[i].titre,"Auteur: ", Livres[i].auteur,"Année: ", Livres[i].annee,"Disponible: "+Livres[i].disponible);
+    if (Livres[i].disponible==="oui"){
+        console.log("id:", Livres[i].id_livre,"Titre:", Livres[i].titre,"Auteur:",Livres[i].auteur,"Année:",Livres[i].annee, "Disponible:"+Livres[i].disponible);
     }
 }
 };
@@ -82,7 +82,7 @@ function rechercherId(){
     let livreId= Number(prompt("Entrez id de livre à chercher: "));
     for(let i=0; i<Livres.length;i++){
         if(livreId==Livres[i].id_livre){
-           console.log("id: ", Livres[i].id_livre,"Titre: ", Livres[i].titre,"Auteur: ", Livres[i].auteur,"Année: ", Livres[i].annee,"Disponible: "+Livres[i].disponible); 
+           console.log("id:",Livres[i].id_livre, "Titre:",Livres[i].titre, "Auteur:",Livres[i].auteur, "Année:",Livres[i].annee, "Disponible:"+Livres[i].disponible); 
         }
     }
 }
@@ -96,8 +96,7 @@ switch(nombreOperation){
     break;
     case 3: afficher()
     break;
-   
-    case 4:  TrierTitre();
+    case 4: TrierTitre();
     break;
     case 5: trierAnnee();
     break;
@@ -105,7 +104,10 @@ switch(nombreOperation){
     break;
     case 7: rechercherId();
     break;
-    default: console.log("Veuillez saisir un nombre d'operation correcte! ")
+    case 8: process.exit();
+    break;
+    default: console.log("Veuillez saisir un nombre d'operation correcte! ");
+    break;
 }
  }while(nombreOperation)
     
